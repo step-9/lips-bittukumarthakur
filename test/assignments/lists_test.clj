@@ -28,14 +28,14 @@
   (testing "string"
     (is (= 6 (count' "abcdef")))))
 
-(deftest ^:implementing reverse-test
+(deftest ^:implemented reverse-test
   (testing "seqable collection"
     (is (= [5 4 3 2 1] (reverse' [1 2 3 4 5])))
     (is (= [5 4 3 2 1] (reverse' '(1 2 3 4 5)))))
   (testing "non-seqable collection"
     (is (nil? (reverse' 1)))))
 
-(deftest ^:kaocha/pending every-test
+(deftest ^:implemented every-test
   (testing "true condition"
     (is (true? (every?' even? [2 4 6 8]))))
   (testing "false condition"

@@ -72,7 +72,13 @@
   {:level        :easy
    :use          '[loop recur and]
    :dont-use     '[every?]}
-  [pred coll])
+  [pred coll]
+  (loop
+   [my-coll (next coll) result (pred (first coll))]
+    (cond
+      (not result) false
+      (empty? my-coll) result
+      :else (recur (next my-coll) (and result (pred (first my-coll)))))))
 
 (defn some?'
   "Implement your own version of some that checks if at least one
