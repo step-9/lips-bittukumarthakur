@@ -18,7 +18,7 @@
    :dont-use     '[filter]}
   [pred coll]
   (loop
-   [coll coll result []]
+   [coll coll result []] ;; need to find a way to bind in a better way or use different name for binding.
     (if (empty? coll)
       result
       (recur
@@ -34,8 +34,14 @@
   {:level        :medium
    :use          '[loop recur]
    :dont-use     '[reduce]}
-  ([f coll])
-  ([f init coll]))
+  ([f coll]
+   (loop
+    [my-coll (next coll) result (first coll)]
+     (if (empty? my-coll)
+       result
+       (recur (next my-coll) (f result (first my-coll))))))
+  ([f init coll]
+   (reduce' f (conj coll init))))
 
 (defn count'
   "Implement your own version of count that counts the
