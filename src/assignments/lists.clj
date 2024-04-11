@@ -62,7 +62,9 @@
   {:level        :easy
    :use          '[reduce conj seqable? when]
    :dont-use     '[reverse]}
-  [coll])
+  [coll]
+  (when (seqable? coll)
+    (reduce conj [] (into '() coll))))
 
 (defn every?'
   "Implement your own version of every? that checks if every
