@@ -49,7 +49,12 @@
   {:level        :easy
    :use          '[loop recur]
    :dont-use     '[count]}
-  [coll])
+  [coll]
+  (loop
+   [my-coll coll count 0]
+    (if (empty? my-coll)
+      count
+      (recur (next my-coll) (inc count)))))
 
 (defn reverse'
   "Implement your own version of reverse that reverses a coll.
