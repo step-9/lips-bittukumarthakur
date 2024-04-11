@@ -12,7 +12,7 @@
   "Returns the result of x/y unless y is 0. Returns :infinite when y is 0"
   {:level :easy
    :use   '[if-not zero?]}
-  [x y] 
+  [x y]
   (if-not (zero? y)
     (/ x y) :infinite))
 
@@ -97,7 +97,11 @@
   (order-in-words 2 3 4) => [:z-greater-than-x]"
   {:level :easy
    :use   '[cond-> conj]}
-  [x y z])
+  [x y z]
+  (cond-> []
+    (> x y) (conj :x-greater-than-y)
+    (> y z) (conj :y-greater-than-z)
+    (> z x) (conj :z-greater-than-x)))
 
 (defn zero-aliases
   "Given a zero-like value(0,[],(),#{},{}) should
